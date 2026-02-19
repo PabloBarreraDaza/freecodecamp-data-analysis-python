@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 
@@ -11,12 +12,18 @@ def calculate_demographic_data(print_data=True):
         'salary'
     ]
 
+    
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(BASE_DIR, "adult.data.csv")
+
     df = pd.read_csv(
-        "adult.data.csv",
+        file_path,
         header=None,
         names=columns,
         skipinitialspace=True
     )
+
 
     # 1 number of people of each race
     race_count = df['race'].value_counts()
